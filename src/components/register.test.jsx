@@ -22,6 +22,7 @@ test("Name Validation accept only alphabetics", async () => {
     userEvent.type(getName(), 'Carlos');
   })
   await waitFor(() => {
+    // Only accept alphabets
     expect(getName().value).toMatch(new RegExp(/^[a-zA-Z]+$/))
   });
 })
@@ -33,6 +34,7 @@ test("check email Validation", async () => {
     userEvent.type(getEmail(), 'abc@gmail.com');
   })
   await waitFor(() => {
+    // validating email
     expect(getEmail().value).toMatch(new RegExp(/^[\w\.-]+@[\w\.-]+\.\w+$/))
   });
 })
@@ -44,6 +46,7 @@ test("check password Validation", async () => {
     userEvent.type(getPassword(), 'Random@1234');
   })
   await waitFor(() => {
+    // password should contain 1 uppercase, 1 lowercase, 1 special character, 1 number  and 8 character long.
     expect(getPassword().value).toMatch(new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~])(?=.*[0-9]).{8,}$/))
   });
 })
